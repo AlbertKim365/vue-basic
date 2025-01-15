@@ -1,24 +1,32 @@
 <template>
-  <div>
-    <!-- <button v-on:click="count++">인라인 핸들러</button>
-    <h1>{{ count }}</h1> -->
+  <h1>{{ text }}</h1>
+  <h1>changeText 함수 호출 값 : {{ changeText() }}</h1>
+  <h1>changeText 함수 호출 값 : {{ changeText() }}</h1>
+  <h1>changeText 함수 호출 값 : {{ changeText() }}</h1>
 
-    <button v-on:click="changeName">메서드 핸들러</button>
-    <h1>{{ name }}</h1>
-  </div>
+  <h2>{{ computedText }}</h2>
+  <h2>{{ computedText }}</h2>
+  <h2>{{ computedText }}</h2>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      count: 0,
-      name: "Vue.js",
+      text: "Computed 테스트 데이터 문구 입니다.",
     };
   },
+  computed: {
+    computedText() {
+      console.log(`computed 기능을 생성 하였습니다.`, this.text);
+      return this.text.split("").reverse().join("");
+    },
+  },
   methods: {
-    changeName() {
-      this.name = "변경된 텍스트 데이터 입니다.";
+    changeText() {
+      console.log(`함수 호출`, this.text);
+
+      return this.text.split("").reverse().join("");
     },
   },
 };
