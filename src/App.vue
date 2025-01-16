@@ -1,27 +1,16 @@
 <template>
   <div>
-    <ChildComponent
-      :sendProps1="title"
-      :sendProps2="createAt"
-      :sendProps3="obj"
-    />
+    부모 컴포넌트 레이아웃
+    <ChildComponent @send-event="parentEvent" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { reactive, ref } from "vue";
 import ChildComponent from "./components/ChildComponent.vue";
-interface Obj {
-  id: number;
-  name: string;
-}
 
-const title = ref<string>("부모 컴포넌트에서 선언된 데이터 입니다.");
-const createAt = ref<number>(2024);
-const obj = reactive<Obj>({
-  id: 2025,
-  name: "Kim",
-});
+const parentEvent = (event: string) => {
+  console.log(event);
+};
 </script>
 
 <style lang="scss" scoped></style>
