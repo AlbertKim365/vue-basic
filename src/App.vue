@@ -1,25 +1,29 @@
 <template>
-  <button @click="changeMessage">{{ message }}</button>
-  {{ watchMessage }}
+  <div>
+    <ChildComponent
+      :sendProps1="title"
+      :sendProps2="createAt"
+      :sendProps3="obj"
+    />
+  </div>
 </template>
 
 <script>
+import ChildComponent from "./components/ChildComponent.vue";
+
 export default {
+  components: {
+    ChildComponent,
+  },
   data() {
     return {
-      message: "안녕하세요! Vue.js Watch 기능 테스트 오리지널 문구",
+      title: "부모 컨포넌트에서 선언된 데이터 입니다.",
+      createAt: 2024,
+      obj: {
+        id: 2025,
+        name: "Kim",
+      },
     };
-  },
-  watch: {
-    message() {
-      this.watchMessage = "Watch 동작";
-    },
-  },
-  methods: {
-    changeMessage() {
-      console.log(`함수 호출`);
-      this.message = "변경된 message 데이터 입니다.";
-    },
   },
 };
 </script>
