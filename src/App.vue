@@ -1,32 +1,24 @@
 <template>
-  <h1>{{ text }}</h1>
-  <h1>changeText 함수 호출 값 : {{ changeText() }}</h1>
-  <h1>changeText 함수 호출 값 : {{ changeText() }}</h1>
-  <h1>changeText 함수 호출 값 : {{ changeText() }}</h1>
-
-  <h2>{{ computedText }}</h2>
-  <h2>{{ computedText }}</h2>
-  <h2>{{ computedText }}</h2>
+  <button @click="changeMessage">{{ message }}</button>
+  {{ watchMessage }}
 </template>
 
 <script>
 export default {
   data() {
     return {
-      text: "Computed 테스트 데이터 문구 입니다.",
+      message: "안녕하세요! Vue.js Watch 기능 테스트 오리지널 문구",
     };
   },
-  computed: {
-    computedText() {
-      console.log(`computed 기능을 생성 하였습니다.`, this.text);
-      return this.text.split("").reverse().join("");
+  watch: {
+    message() {
+      this.watchMessage = "Watch 동작";
     },
   },
   methods: {
-    changeText() {
-      console.log(`함수 호출`, this.text);
-
-      return this.text.split("").reverse().join("");
+    changeMessage() {
+      console.log(`함수 호출`);
+      this.message = "변경된 message 데이터 입니다.";
     },
   },
 };
