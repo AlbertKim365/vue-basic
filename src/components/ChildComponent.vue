@@ -1,18 +1,23 @@
 <template>
-  <button @click="sendEvent">자식 컴포넌트에서 만든 버튼</button>
+  <div>
+    <input type="text" v-model="inputValue1" />
+    <input
+      type="text"
+      :value="inputValue2"
+      @input="inputValue2 = $event.target.value"
+    />
+  </div>
+  <div>{{ inputValue1 }}</div>
+  <div>{{ inputValue2 }}</div>
 </template>
 
 <script>
 export default {
   data() {
     return {
-      text: "자식 컨포넌트에서 선언된 데이터 입니다.",
+      inputValue1: "",
+      inputValue2: "",
     };
-  },
-  methods: {
-    sendEvent() {
-      this.$emit("send-event", this.text);
-    },
   },
 };
 </script>
