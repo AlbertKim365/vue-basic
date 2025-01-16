@@ -1,21 +1,22 @@
 <template>
-  <div>{{ sendProps1 }}</div>
-  <div>{{ sendProps2 }}</div>
-  <div>{{ sendProps3.id }}</div>
-  <div>{{ sendProps3.name }}</div>
+  <div>{{ props.sendProps1 }}</div>
+  <div>{{ props.sendProps2 }}</div>
+  <div>{{ props.sendProps3.id }}</div>
+  <div>{{ props.sendProps3.name }}</div>
 </template>
 
-<script>
-export default {
-  props: {
-    sendProps1: String,
-    sendProps2: Number,
-    sendProps3: Object,
-  },
-  data() {
-    return {};
-  },
-};
+<script setup lang="ts">
+interface Obj {
+  id: number;
+  name: string;
+}
+
+interface Props {
+  sendProps1: String;
+  sendProps2: Number;
+  sendProps3: Obj;
+}
+const props = defineProps<Props>();
 </script>
 
 <style lang="scss" scoped></style>
